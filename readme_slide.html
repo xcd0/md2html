@@ -14,14 +14,14 @@ var current_num;var current;function zeroPadding(num,length){return('0000000000'
 function setPage(p,n){goto(p,n)
 location.hash=current_num;}
 function init(){var urlHash=location.hash.slice(1);if(urlHash==false){current_num=zeroPadding(0,4);}else{if(isNaN(urlHash)){current_num="0000"
-location.hash=current_num;}else{current_num=zeroPadding(urlHash,4);var n=Number(current_num);if(n<0||n>19){current_num="0000"
+location.hash=current_num;}else{current_num=zeroPadding(urlHash,4);var n=Number(current_num);if(n<0||n>18){current_num="0000"
 location.hash=current_num;}else{}}}
 current="p"+String(current_num);main=document.getElementById("container");setPage(current,current)}
 function prev(){p=current
 if(current_num!="0000"){current_num=zeroPadding(Number(current_num)-1,4);}
 current="p"+current_num;setPage(p,current)}
 function next(){p=current
-if(current_num!="0019"){current_num=zeroPadding(Number(current_num)+1,4);}
+if(current_num!="0018"){current_num=zeroPadding(Number(current_num)+1,4);}
 current="p"+current_num;setPage(p,current)}
 function resizeFontSize(p,r){p.style.zoom=r;p.style.MozTransform=r;p.style.WebkitTransform=r;}
 function checkSize(c){var r=document.getElementById(c).getBoundingClientRect();console.log("cH : "+c.clientHeight
@@ -103,13 +103,13 @@ html単体で画像やCSSを含んだ可搬性のある文書が生成できま�
 <div style='page-break-before:always'></div>
 <p>例えば</p>
 <ul>
-<li><a href="https://static.xcd0.com/2019/11/md2html_v5/readme.md">readme.md</a></li>
-<li><a href="https://static.xcd0.com/2019/11/md2html_v5/build.gif">build.gif</a></li>
+<li><a href="https://raw.githubusercontent.com/xcd0/md2html/master/readme.md">readme.md</a></li>
+<li><a href="https://raw.githubusercontent.com/xcd0/md2html/master/build.gif">build.gif</a></li>
 </ul>
 <p>これらのファイルから(ブラウザで文字化けするときはutf-8を指定)</p>
 <ul>
-<li><a href="https://static.xcd0.com/2019/11/md2html_v5/readme.html">readme.html</a></li>
-<li><a href="https://static.xcd0.com/2019/11/md2html_v5/readme_slide.html">readme_slide.html</a></li>
+<li><a href="https://raw.githubusercontent.com/xcd0/md2html/master/readme.html">readme.html</a></li>
+<li><a href="https://raw.githubusercontent.com/xcd0/md2html/master/readme_slide.html">readme_slide.html</a></li>
 </ul>
 <p>を生成できます。</p>
 </div>
@@ -597,81 +597,11 @@ html単体で画像やCSSを含んだ可搬性のある文書が生成できま�
 <div style='page-break-before:always'></div>
 <h3 id="htmlが文字化けした">htmlが文字化けした</h3>
 <ul>
-<li><del>mdファイルの文字コードが<code>Shift-jis</code>だと文字化けする。</del>
-<ul>
-<li><code>Shift-jis</code>は内部で勝手に文字コードを変換するようにした。</li>
-</ul></li>
-<li>改行コードも内部的には勝手に<code>LF</code>に変換している。</li>
-<li>ダメなら<code>UTF-8 LF</code>で保存する。</li>
+<li><code>UTF-8 LF</code>で保存する。</li>
+<li>恐らくmarkdownのファイルの文字コードが<code>UTF-8</code><code>Shift-JIS</code>の何れかでない。</li>
+<li><code>Shift-JIS</code>は内部で勝手に文字コードを変換するようにしている。改行コードも内部的には勝手に<code>LF</code>に変換している。</li>
+<li>なので大丈夫なはずなのだけれども、文字化けするということはそれでもうまくいっていないということ。</li>
 </ul>
-</div>
-<div id="p0019" id="container" class="sub" style="visibility: hidden;">
-<!-- 自動生成されたプリアンブル ここから -->
-<!-- // $width:"841.89" -->
-<!-- // $height:"595.28" -->
-<!-- // $page_number:"true" -->
-<!-- // $page:"19" -->
-<!-- // $absolute_page:"19" -->
-<!-- // $h2:"変更履歴" -->
-<!-- // $h3:"none" -->
-<!-- // $title:"true" -->
-<!-- // $state_title:"2" -->
-<!-- 自動生成されたプリアンブル ここまで -->
-<!-- 前のページから引き継いだタイトル ここから -->
-<!-- 前のページから引き継いだタイトル ここまで -->
-<div style='page-break-before:always'></div>
-<h2 id="変更履歴">変更履歴</h2>
-<table>
-<thead>
-<tr>
-<th align="center">改定日</th>
-<th align="center">版</th>
-<th align="center">内容</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="center">2019/08/28</td>
-<td align="center">1</td>
-<td align="center">新規作成。shellscriptで書いており、<a href="https://github.com/gohugoio/hugo">hugo</a>を使用していた。</td>
-</tr>
-<tr>
-<td align="center">2019/09/26</td>
-<td align="center">2</td>
-<td align="center">画像のbase64エンコード実装。</td>
-</tr>
-<tr>
-<td align="center">2019/10/01</td>
-<td align="center">3</td>
-<td align="center">hugoのバイナリを同梱するのをやめた<br>OSに合わせて自動でDLするようにした。</td>
-</tr>
-<tr>
-<td align="center">2019/10/30</td>
-<td align="center">4</td>
-<td align="center">shellscriptをやめ全てGolangで書きなおした。<br>これにより全ての使用条件を撤廃、100倍早くなった。</td>
-</tr>
-<tr>
-<td align="center">2019/11/21</td>
-<td align="center">5</td>
-<td align="center">Hugoの使用を廃止。スライド用html生成を実装。</td>
-</tr>
-<tr>
-<td align="center">2019/11/27</td>
-<td align="center">5.1</td>
-<td align="center">スライド用htmlの画像サイズのウィンドウサイズによって可変するように変更した。</td>
-</tr>
-<tr>
-<td align="center">2020/11/30</td>
-<td align="center">5.2</td>
-<td align="center">ページ数表示に対応</td>
-</tr>
-<tr>
-<td align="center">2020/12/1</td>
-<td align="center">5.3</td>
-<td align="center">埋め込んでいるcssとjavascriptを自前でminifyするようにした</td>
-</tr>
-</tbody>
-</table>
 </div>
 </div><script>renderMathInElement(document.body,{delimiters: [{left: "$$", right: "$$", display: true},{left: "$", right: "$", display: false}]});</script>
 	</body>

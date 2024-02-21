@@ -21,13 +21,13 @@ html単体で画像やCSSを含んだ可搬性のある文書が生成できま�
 
 例えば
 
-* [readme.md](https://static.xcd0.com/2019/11/md2html_v5/readme.md)
-* [build.gif](https://static.xcd0.com/2019/11/md2html_v5/build.gif)
+* [readme.md](https://raw.githubusercontent.com/xcd0/md2html/master/readme.md)
+* [build.gif](https://raw.githubusercontent.com/xcd0/md2html/master/build.gif)
 
 これらのファイルから(ブラウザで文字化けするときはutf-8を指定)
 
-* [readme.html](https://static.xcd0.com/2019/11/md2html_v5/readme.html)
-* [readme_slide.html](https://static.xcd0.com/2019/11/md2html_v5/readme_slide.html)
+* [readme.html](https://raw.githubusercontent.com/xcd0/md2html/master/readme.html)
+* [readme_slide.html](https://raw.githubusercontent.com/xcd0/md2html/master/readme_slide.html)
 
 を生成できます。  
 

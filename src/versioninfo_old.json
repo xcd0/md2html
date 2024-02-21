@@ -24,14 +24,14 @@
     "Comments": "",
     "CompanyName": "",
     "FileDescription": "マークダウンのファイルをhtmlに変換します",
-    "FileVersion": "5.3.3.49f45cc",
+    "FileVersion": "5.3.3.fa4adff",
     "InternalName": "md2html",
     "LegalCopyright": "Copyright (C) 2020 xcd0",
     "LegalTrademarks": "",
     "OriginalFilename": "md2html.exe",
     "PrivateBuild": "",
     "ProductName": "md2html",
-    "ProductVersion": "5.3.3.49f45cc",
+    "ProductVersion": "5.3.3.fa4adff",
     "SpecialBuild": ""
   },
   "VarFileInfo": {
