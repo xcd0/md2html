@@ -5,7 +5,6 @@ import ( // {{{
 	"flag"
 	"fmt"
 	"io/ioutil"
-	"log"
 
 	//"log"
 	"os"
@@ -18,7 +17,40 @@ import ( // {{{
 const version = "5.3.3"
 
 func main() {
-	log.SetFlags(log.Ltime | log.Lshortfile) // ログの出力書式を設定する
+	ArgParse(func(args *Args) error {
+		// wg4searchが終わるのを待ってwgをすすめる
+		wg := sync.WaitGroup{}
+
+		// 画像を探す
+		searchTargetFile(&fi)
+
+		// そのまま印刷したら単純な文書になる印刷用htmlを作成する 出力はしない
+		wg.Add(1)
+		go func() {
+			defer wg.Done()
+			//fmt.Println("call : makeHtmlNP")
+			makeHtml(&fi)
+		}()
+
+		// スライド用htmlを生成する
+		wg.Add(1)
+		go func() {
+			defer wg.Done()
+			//fmt.Println("call : MakePdfForSlideNP")
+			MakePdfForSlide(&fi)
+		}()
+
+		wg.Wait()
+
+		// pdfをつくる
+		/*
+			fi.Pdfpath = fi.Dpath + fi.Basename + ".pdf"
+			html2pdf.Html2pdf(fi)
+		*/
+	})
+}
+
+func main_old() {
 	flag.Parse()
 	// 第一引数にマークダウンのファイルのパスを受け取る
 	// 引数を元に構造体を作る
@@ -46,7 +78,7 @@ func main() {
 	// 画像を探す
 	searchTargetFile(&fi)
 
-	// そのまま印刷したら単純な文書になる印刷用htmlを作成する 出力はしない
+	// そのまま印刷したらrwな文書になる印刷用htmlを作成する 出力はしない
 	wg.Add(1)
 	go func() {
 		defer wg.Done()
@@ -135,4 +167,4 @@ func searchTargetFile(fi *Fileinfo) { // {{{1
 	outputList = sortStirngsLen(outputList)
 
 	fi.RImgPath = outputList
-} // }}}1
+} // }}}-
